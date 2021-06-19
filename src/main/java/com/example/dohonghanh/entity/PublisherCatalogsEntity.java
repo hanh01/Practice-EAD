@@ -1,6 +1,7 @@
 package com.example.dohonghanh.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "publisher")
@@ -21,16 +22,8 @@ public class PublisherCatalogsEntity {
     @Column(name = "phone ")
     private String phone ;
 
-    @OneToOne(mappedBy = "publisher")
-    private BookDetailsEntity details;
-
-    public BookDetailsEntity getDetails() {
-        return details;
-    }
-
-    public void setDetails(BookDetailsEntity details) {
-        this.details = details;
-    }
+    @OneToMany(mappedBy = "publisher",fetch = FetchType.LAZY)
+    private List<BookDetailsEntity> details;
 
     public int getId() {
         return id;
@@ -70,5 +63,13 @@ public class PublisherCatalogsEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<BookDetailsEntity> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<BookDetailsEntity> details) {
+        this.details = details;
     }
 }

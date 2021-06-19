@@ -21,7 +21,7 @@ public class BookDetailsEntity {
     @Column(name = "genre")
     private String genre;
 
-    @OneToOne
+    @ManyToOne()
     @JoinColumn(name = "publisherid", insertable = false, updatable = false)
     private PublisherCatalogsEntity publisher;
 
