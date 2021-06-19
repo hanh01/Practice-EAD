@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>List user</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--css-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <!--js-->
+    <script th:src="@{/js/min.js}"></script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <form>
+        Search by first name:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+
+    <div class="p-4">
+        <a th:href="@{/add}" role="button" class="btn btn-success">AddUser</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genre</th>
+            <th scope="col">publisher name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}"></th>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.author}"></td>
+            <td th:text="${user.genre}"></td>
+            <td th:text="${user.publisher.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</body>
+</html>
